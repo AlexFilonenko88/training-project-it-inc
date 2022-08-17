@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { NewComponents } from './components/NewComponents';
 import { Button } from './components/Button';
+import { Filter } from "./components/Filter";
 
 function App() {
+
 
   const topCars = [
     {manufacturer:'BMW', model:'m5cs', id:1},
@@ -34,6 +36,15 @@ function App() {
       console.log("Stuped BUTTON")
     }
 
+    // let a = 1;
+    let[a, setA]= useState(1);
+
+    const onClickHandler = () => {
+      setA(++a)
+ 
+      console.log(a)
+    }
+
   return (
     <>
       <Header title={'qwer1234'} />
@@ -46,7 +57,16 @@ function App() {
         <Button name={'MyYouNubeChanel-1'} callBack={()=>Button1Foo("I`m Vasya", 21)}/>
         <Button name={'MyYouNubeChanel-2'} callBack={()=>Button2Foo("I`m Alex")}/>
         <Button name={'Stuped BUTTON'} callBack={Button3Foo}/>
+
+        {/* useState */}
+
+        <div className='App'>
+          <h1>{a}</h1>
+          <button onClick={onClickHandler}>number</button>
+        </div>
       </div>
+
+      <Filter />
     </>
   );
 }
